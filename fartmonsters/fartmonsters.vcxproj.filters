@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\cg">
+      <UniqueIdentifier>{38a33fb5-b8ea-4a7b-b0b0-941c7875881a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\init">
+      <UniqueIdentifier>{4ed2dad1-fbef-44f6-a4c5-d5ebb92abdd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cg">
+      <UniqueIdentifier>{7f5fe2dc-bcd8-4ec2-a078-8ba9e4efe219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\_lib">
+      <UniqueIdentifier>{88075ea1-0556-450c-b688-c1fe9b23102e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\com">
+      <UniqueIdentifier>{518edc36-7c25-4958-806a-8e63cc9ddf0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\_lib\detours">
+      <UniqueIdentifier>{a5cb0720-bde6-4a3b-ab1f-fbfcb8d3078b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\bg">
+      <UniqueIdentifier>{0448034e-e3e5-494b-88e8-1450cd9f3f1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render">
+      <UniqueIdentifier>{61cc0767-9434-4181-88d0-e2dc139164b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dvar">
+      <UniqueIdentifier>{ac6803f9-0eb6-4e89-a1e1-b624b8d95620}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cg_local.hpp">
+      <Filter>Header Files\cg</Filter>
+    </ClInclude>
+    <ClInclude Include="entry.hpp">
+      <Filter>Header Files\init</Filter>
+    </ClInclude>
+    <ClInclude Include="cg_init.hpp">
+      <Filter>Source Files\cg</Filter>
+    </ClInclude>
+    <ClInclude Include="koukku.hpp">
+      <Filter>Header Files\_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="com_channel.hpp">
+      <Filter>Source Files\com</Filter>
+    </ClInclude>
+    <ClInclude Include="detours\detours.h">
+      <Filter>Header Files\_lib\detours</Filter>
+    </ClInclude>
+    <ClInclude Include="bg_pmove.hpp">
+      <Filter>Source Files\bg</Filter>
+    </ClInclude>
+    <ClInclude Include="cg_offsets.hpp">
+      <Filter>Header Files\cg</Filter>
+    </ClInclude>
+    <ClInclude Include="r_init.hpp">
+      <Filter>Source Files\render</Filter>
+    </ClInclude>
+    <ClInclude Include="dvar.hpp">
+      <Filter>Source Files\dvar</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="entry.cpp">
+      <Filter>Header Files\init</Filter>
+    </ClCompile>
+    <ClCompile Include="cg_init.cpp">
+      <Filter>Source Files\cg</Filter>
+    </ClCompile>
+    <ClCompile Include="koukku.cpp">
+      <Filter>Header Files\_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="com_channel.cpp">
+      <Filter>Source Files\com</Filter>
+    </ClCompile>
+    <ClCompile Include="bg_pmove.cpp">
+      <Filter>Source Files\bg</Filter>
+    </ClCompile>
+    <ClCompile Include="r_init.cpp">
+      <Filter>Source Files\render</Filter>
+    </ClCompile>
+    <ClCompile Include="r_main.cpp">
+      <Filter>Source Files\render</Filter>
+    </ClCompile>
+    <ClCompile Include="dvar.cpp">
+      <Filter>Source Files\dvar</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="detours\detours.lib">
+      <Filter>Header Files\_lib\detours</Filter>
+    </Library>
+  </ItemGroup>
+</Project>
