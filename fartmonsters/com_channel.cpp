@@ -8,6 +8,11 @@ void Com_Printf(int channel, const char* msg, ...)
 	va_start(ArgList, msg);
 	_vsnprintf_s(Buffer, 0x1000u, msg, ArgList);
 	Buffer[4095] = 0;
+	std::cout << Buffer;
+	if (channel == CON_CHANNEL_CONSOLEONLY) {
+		
+		fs::Log_Write(LOG_NONE, Buffer);
+	}
 
 	return ((void(__cdecl*)(int channel, char* buffer))0x431D10)(channel, Buffer);
 }

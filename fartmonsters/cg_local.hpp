@@ -2,17 +2,36 @@
 
 #ifndef cglocal
 #define cglocal
+#define	PITCH					0		// up / down
+#define	YAW						1		// left / right
+#define	ROLL					2		// fall over
 
+enum CON_CHANNEL_t
+{
+	CON_CHANNEL_CONSOLEONLY,
+	CON_CHANNEL_OBITUARY
+};
 namespace cg
 {
+	struct DxGlobals
+	{
+		IDirect3D9* d3d9;
+		IDirect3DDevice9* device;
+		unsigned int adapterIndex;
+		bool adapterNativeIsValid;
+		int adapterNativeWidth;
+		int adapterNativeHeight;
+		int adapterFullscreenWidth;
+		int adapterFullscreenHeight;
+		int depthStencilFormat;
+	};
 	struct __declspec(align(2)) usercmd_s
 	{
 		int serverTime;
 		int buttons;
-		int angles[3];
 		char weapon;
 		char offHandIndex;
-		char selectedLocation[2];
+		int angles[3];
 		char forwardmove;
 		char rightmove;
 	};
@@ -183,6 +202,26 @@ namespace cg
 		int spreadOverride;
 		float viewangles[3];
 	};
+	struct clientActive_t
+	{
+
+		float cgameFOVSensitivityScale; //0000
+		float cgameMaxPitchSpeed;//0004
+		float cgameMaxYawSpeed;//0008
+		float cgameKickAngles[3];//0014
+		float viewangles[3];//0020
+		int serverId;//0024
+		char pad[0x20];
+
+		//0x48 here
+		__declspec(align(4)) usercmd_s cmds[128];
+		usercmd_s* GetUserCmd(int cmdNum)
+		{
+			return &cmds[cmdNum & 0x7F];
+		}
+		char empty_pad[0x4000C];
+		int cmdNumber;
+	};
 	struct __declspec(align(4)) pmove_t
 	{
 		playerState_s* ps;
@@ -202,6 +241,15 @@ namespace cg
 		int mantleDuration;
 		int viewChangeTime;
 		float viewChange;
+	};
+	struct Font_s
+	{
+		const char* fontName;
+		int pixelHeight;
+		int glyphCount;
+		void* material;
+		void* glowMaterial;
+		void* glyphs;
 	};
 
 

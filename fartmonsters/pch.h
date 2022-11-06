@@ -99,6 +99,7 @@ typedef vec_t vec4_t[4];
 #include "detours/detours.h"
 #pragma comment(lib, "detours.lib")
 
+#include "q_math.hpp"
 #include "koukku.hpp"
 
 #include "entry.hpp"
@@ -108,10 +109,22 @@ typedef vec_t vec4_t[4];
 #include "dvar.hpp"
 #include "com_channel.hpp"
 
+#include "fs_funcs.h"
+#include "fs_log.hpp"
+
 #include "cg_init.hpp"
+#include "cg_angle.hpp"
 
 #include "r_init.hpp"
+#include "r_ui.hpp"
+#include "r_drawtools.hpp"
+
+#include "mod_vis.hpp"
+#include "mod_automation.hpp"
 
 #include "bg_pmove.hpp"
+
+using namespace std::chrono_literals;
+
 
 #endif //PCH_H

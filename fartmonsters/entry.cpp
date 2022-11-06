@@ -29,8 +29,8 @@ void _init()
     if (hooked)
         return;
 
-    //AllocConsole();
-    //freopen_s(&_con, "CONOUT$", "w", stdout);
+    AllocConsole();
+    freopen_s(&_con, "CONOUT$", "w", stdout);
 
     std::thread(cg::CG_DllEntry).detach();
     std::cout << "requesting to inject\n";
@@ -88,14 +88,15 @@ void cg::CG_DllEntry()
         return;
     }
 
-    //while (!cgs || !cg::dx->device) {
-    //    std::this_thread::sleep_for(100ms);
-    //}
+    while (!cg::dx->device) {
+        std::this_thread::sleep_for(100ms);
+    }
     // std::this_thread::sleep_for(1s);
    // fs::Log_Create(fs::GetExePath() + "\\1_kej_log.txt");
 
     //if (iw3x)
     //    Com_PrintWarning(CON_CHANNEL_CONSOLEONLY, "iw3xo detected; expect undefined behavior..\n");
+    fs::Log_Create(fs::GetExePath() + "\\1_kej_log.txt");
 
     CG_Init();
 

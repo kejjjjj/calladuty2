@@ -87,7 +87,7 @@ enum class dvar_type : std::int8_t
 //	printable = 1 << 16,
 //};
 
-enum dvar_flags : std::uint16_t
+enum class dvar_flags : std::uint16_t
 {
 	none = 0x0,
 	saved = 0x1,

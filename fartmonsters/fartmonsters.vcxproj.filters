@@ -40,6 +40,18 @@
     <Filter Include="Source Files\dvar">
       <UniqueIdentifier>{ac6803f9-0eb6-4e89-a1e1-b624b8d95620}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\mod">
+      <UniqueIdentifier>{4cfcfad4-b5b2-4f7a-8bfb-74ee1d47d89f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\fs">
+      <UniqueIdentifier>{eeb05304-0db3-406c-8364-bfb622d1990d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\_lib\ImGui">
+      <UniqueIdentifier>{fac42f94-d45d-4369-907b-1013984582a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\shared">
+      <UniqueIdentifier>{996beead-910a-4018-baf4-e9a53967cb84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -78,6 +90,54 @@
     <ClInclude Include="dvar.hpp">
       <Filter>Source Files\dvar</Filter>
     </ClInclude>
+    <ClInclude Include="r_drawtools.hpp">
+      <Filter>Source Files\render</Filter>
+    </ClInclude>
+    <ClInclude Include="cg_angle.hpp">
+      <Filter>Source Files\cg</Filter>
+    </ClInclude>
+    <ClInclude Include="mod_automation.hpp">
+      <Filter>Source Files\mod</Filter>
+    </ClInclude>
+    <ClInclude Include="fs_funcs.h">
+      <Filter>Source Files\fs</Filter>
+    </ClInclude>
+    <ClInclude Include="fs_log.hpp">
+      <Filter>Source Files\fs</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_dx9.h">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_win32.h">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_rectpack.h">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_textedit.h">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_truetype.h">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="r_ui.hpp">
+      <Filter>Source Files\render</Filter>
+    </ClInclude>
+    <ClInclude Include="mod_vis.hpp">
+      <Filter>Source Files\mod</Filter>
+    </ClInclude>
+    <ClInclude Include="q_math.hpp">
+      <Filter>Source Files\shared</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -106,6 +166,51 @@
     </ClCompile>
     <ClCompile Include="dvar.cpp">
       <Filter>Source Files\dvar</Filter>
+    </ClCompile>
+    <ClCompile Include="r_drawtools.cpp">
+      <Filter>Source Files\render</Filter>
+    </ClCompile>
+    <ClCompile Include="cg_angle.cpp">
+      <Filter>Source Files\cg</Filter>
+    </ClCompile>
+    <ClCompile Include="mod_automation.cpp">
+      <Filter>Source Files\mod</Filter>
+    </ClCompile>
+    <ClCompile Include="fs_log.cpp">
+      <Filter>Source Files\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="fs_funcs.cpp">
+      <Filter>Source Files\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_win32.cpp">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_tables.cpp">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_demo.cpp">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_dx9.cpp">
+      <Filter>Header Files\_lib\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="r_ui.cpp">
+      <Filter>Source Files\render</Filter>
+    </ClCompile>
+    <ClCompile Include="mod_vis.cpp">
+      <Filter>Source Files\mod</Filter>
+    </ClCompile>
+    <ClCompile Include="q_math.cpp">
+      <Filter>Source Files\shared</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
