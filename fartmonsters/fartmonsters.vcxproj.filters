@@ -52,6 +52,9 @@
     <Filter Include="Source Files\shared">
       <UniqueIdentifier>{996beead-910a-4018-baf4-e9a53967cb84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\cl">
+      <UniqueIdentifier>{46d26608-61d3-4039-b089-8f5b357a921e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -138,6 +141,9 @@
     <ClInclude Include="q_math.hpp">
       <Filter>Source Files\shared</Filter>
     </ClInclude>
+    <ClInclude Include="cl_input.hpp">
+      <Filter>Source Files\cl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -211,6 +217,9 @@
     </ClCompile>
     <ClCompile Include="q_math.cpp">
       <Filter>Source Files\shared</Filter>
+    </ClCompile>
+    <ClCompile Include="cl_input.cpp">
+      <Filter>Source Files\cl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

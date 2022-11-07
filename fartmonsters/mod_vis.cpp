@@ -84,7 +84,12 @@ void cg::Mod_DrawAngleHelper()
 }
 void cg::Mod_DrawVelocity()
 {
-	const float _speed = glm::length(glm::vec2(_pm->ps->velocity[1], _pm->ps->velocity[0]));
+	const float _speed = glm::length(glm::vec2(cg->velocity[1], cg->velocity[0]));
+	usercmd_s* cmd = CL_GetUserCmd(clients->cmdNumber - 1);
+
+	if (!cmd)
+		return;
+
 	char buff[14];
 	sprintf_s(buff, "%i", (int)_speed);
 	ImGui::GetBackgroundDrawList()->AddText(ImVec2(945, 500), IM_COL32(0, 255, 0, 255), buff);

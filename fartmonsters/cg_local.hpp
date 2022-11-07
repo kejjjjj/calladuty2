@@ -219,7 +219,7 @@ namespace cg
 		{
 			return &cmds[cmdNum & 0x7F];
 		}
-		char empty_pad[0x4000C];
+		char empty_pad[0x4000C+4];
 		int cmdNumber;
 	};
 	struct __declspec(align(4)) pmove_t
@@ -251,7 +251,26 @@ namespace cg
 		void* glowMaterial;
 		void* glyphs;
 	};
+	struct cgame_t
+	{
+		float cgameOrigin[3];
+		float cgameVelocity[3];
+		float oldVelocity[2];
+		int weaponDelay;
+		int weaponDelay2;
+		float pad01[3];
+		int gravity;
+		float leanOffset;
+		int speed;
+		int unknown;
+		int unknown2;
 
+	};
+	struct cgs_t
+	{
+		int oldTime;
+		int time;
+	};
 
 }
 

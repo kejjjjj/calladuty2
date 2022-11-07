@@ -83,19 +83,21 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 void cg::CG_DllEntry()
 {
     const DWORD cod2mp = (DWORD)GetModuleHandleA("CoD2MP_s.exe");
+    const DWORD cod2mp_w = (DWORD)GetModuleHandleA("CoD2MP_w.exe");
 
-    if (!cod2mp) {
+    if (!cod2mp && !cod2mp_w) {
         return;
     }
-
+    hook* a = nullptr;
+   // r::R_CreateWindow_f = (void(*)())				(gfx_d3d_mp_x86_s + 0x12AA8);
+   // a->install(&(PVOID&)r::R_CreateWindow_f, r::R_CreateWindow);
+   // a->write_addr(gfx_d3d_mp_x86_s + 0x12AAD, "\xBD\x00\x00\x00\x90", 5);
     while (!cg::dx->device) {
         std::this_thread::sleep_for(100ms);
     }
-    // std::this_thread::sleep_for(1s);
-   // fs::Log_Create(fs::GetExePath() + "\\1_kej_log.txt");
+    //std::this_thread::sleep_for(1s);
 
-    //if (iw3x)
-    //    Com_PrintWarning(CON_CHANNEL_CONSOLEONLY, "iw3xo detected; expect undefined behavior..\n");
+
     fs::Log_Create(fs::GetExePath() + "\\1_kej_log.txt");
 
     CG_Init();

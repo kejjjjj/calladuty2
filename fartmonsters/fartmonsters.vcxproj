@@ -164,6 +164,7 @@
     <ClInclude Include="cg_init.hpp" />
     <ClInclude Include="cg_local.hpp" />
     <ClInclude Include="cg_offsets.hpp" />
+    <ClInclude Include="cl_input.hpp" />
     <ClInclude Include="com_channel.hpp" />
     <ClInclude Include="detours\detours.h" />
     <ClInclude Include="dvar.hpp" />
@@ -192,6 +193,7 @@
     <ClCompile Include="bg_pmove.cpp" />
     <ClCompile Include="cg_angle.cpp" />
     <ClCompile Include="cg_init.cpp" />
+    <ClCompile Include="cl_input.cpp" />
     <ClCompile Include="com_channel.cpp" />
     <ClCompile Include="dvar.cpp" />
     <ClCompile Include="entry.cpp" />

@@ -138,33 +138,41 @@ void cg::CG_SetPlayerAngles(vec3_t source, vec3_t target)
 }
 float cg::R_GetOptAngle(const bool rightmove, float& diff)
 {
-	if (!_pm)
-		return -400.f;
+	usercmd_s* cmd = CL_GetUserCmd(clients->cmdNumber - 1);
 
-	usercmd_s* cmd = &_pm->oldcmd;
+	if (!cmd)
+		return -400;
 
 	char forwardmove = cmd->forwardmove;
 	//char rightmove = cmd->rightmove;
 
 
-	float _speed = glm::length(glm::vec2(_pm->ps->velocity[1], _pm->ps->velocity[0]));
+	float _speed = glm::length(glm::vec2(cg->velocity[1], cg->velocity[0]));
 
 	if (_speed < 1)
 		return -400;
 
 
-	float yaw = _pm->ps->viewangles[YAW];
-	float g_speed = (float)_pm->ps->speed;
+	float yaw = cg->viewangles[YAW];
+	float g_speed = (float)cg->speed;
 	const float FPS = (float)Dvar_FindMalleableVar("com_maxfps")->current.integer;
 
 	float accel = FPS / g_speed;
 
+	DWORD weap = cg::WeaponNames[cg::cg->weapon];
+	if (!weap)
+		return -400;
 
+	const DWORD _speedScale = (weap + 0x264);
+	float moveSpeedScale = *(float*)(_speedScale);
 
-	if (_speed < g_speed)
-		g_speed = g_speed - (g_speed - _speed);
+	//if (_speed < g_speed)
+	//	g_speed = g_speed - (g_speed - _speed);
 
-	const double velocitydirection = atan2(_pm->ps->velocity[1], _pm->ps->velocity[0]) * 180.f / PI;
+	if (cg->groundEntityNum == 1022)
+		g_speed = 186.f * moveSpeedScale;
+
+	const double velocitydirection = atan2(cg->velocity[1], cg->velocity[0]) * 180.f / PI;
 	const double accelerationAng = atan2(-rightmove, forwardmove) * 180.f / PI;
 	diff = acos((g_speed - accel) / _speed) * 180.f / PI;
 
@@ -189,13 +197,22 @@ float cg::CG_GetOptAngle(float& _opt, bool all_techs)
 	if (!_pm)
 		return -400.f;
 
-	usercmd_s* cmd = &_pm->cmd;
+	usercmd_s* cmd = CL_GetUserCmd(clients->cmdNumber - 1);
+	dvar_s* strafebot_ground = Dvar_FindMalleableVar("kej_strafebot_ground");
+
+	if (!cmd || !strafebot_ground)
+		return -400;
+
+	if (!strafebot_ground->current.enabled && cg->groundEntityNum == 1022)
+		return -400;
 
 	char forwardmove = cmd->forwardmove;
 	char rightmove = cmd->rightmove;
 
 
-	float _speed = glm::length(glm::vec2(_pm->ps->velocity[1], _pm->ps->velocity[0]));
+	float _speed = glm::length(glm::vec2(cg->velocity[1], cg->velocity[0]));
+	//if (strafebot_op->current.enabled)
+	//	_speed *= 1.1;
 
 	if (_speed < 1 || !all_techs && forwardmove != 127 && rightmove != 0)
 		return -400;
@@ -204,8 +221,8 @@ float cg::CG_GetOptAngle(float& _opt, bool all_techs)
 		forwardmove = cmd->forwardmove;
 	else forwardmove = 127;
 
-	float yaw = _pm->ps->viewangles[YAW];
-	float g_speed = (float)_pm->ps->speed;
+	float yaw = cg->viewangles[YAW];
+	float g_speed = (float)cg->speed;
 	const float FPS = (float)Dvar_FindMalleableVar("com_maxfps")->current.integer;
 
 	float accel = FPS / g_speed;
@@ -213,22 +230,21 @@ float cg::CG_GetOptAngle(float& _opt, bool all_techs)
 	if (FPS == 125) {
 		accel = g_speed / FPS;
 	}
-	static float testspeed = 190.f;
+	DWORD weap = cg::WeaponNames[cg::cg->weapon];
+	if (!weap)
+		return -400;
 
-	if (GetAsyncKeyState(VK_UP) & 1) {
-		testspeed+=1;
-		Com_Printf(CON_CHANNEL_OBITUARY, "^2%.1f", testspeed);
-	}
-	else if (GetAsyncKeyState(VK_DOWN) & 1) {
-		testspeed -= 1;
-		Com_Printf(CON_CHANNEL_OBITUARY, "^2%.1f", testspeed);
-	}
-	if (_pm->ps->groundEntityNum == 1022)
-		g_speed = 186.f;
-	//else if (_pm->ps->groundEntityNum == 1022)
-	//	g_speed = 224.f;
+	const DWORD _speedScale = (weap + 0x264);
+	float moveSpeedScale = *(float*)(_speedScale);
 
-	const double velocitydirection = atan2(_pm->ps->velocity[1], _pm->ps->velocity[0]) * 180.f / PI;
+	if (cg->groundEntityNum == 1022) {
+		if (_speed > 186)
+			g_speed = 186.f * moveSpeedScale;
+		else
+			g_speed = (cg->speed - (cg->speed - _speed)) * moveSpeedScale;
+	}
+
+	const double velocitydirection = atan2(cg->velocity[1], cg->velocity[0]) * 180.f / PI;
 	const double accelerationAng = atan2(-rightmove, forwardmove) * 180.f / PI;
 	double diff = acos((g_speed - accel) / _speed) * 180.f / PI;
 

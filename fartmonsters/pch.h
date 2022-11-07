@@ -115,6 +115,8 @@ typedef vec_t vec4_t[4];
 #include "cg_init.hpp"
 #include "cg_angle.hpp"
 
+#include "cl_input.hpp"
+
 #include "r_init.hpp"
 #include "r_ui.hpp"
 #include "r_drawtools.hpp"

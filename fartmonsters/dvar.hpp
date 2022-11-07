@@ -119,6 +119,9 @@ struct dvar_s
 	bool(__cdecl* domainFunc)(dvar_s*, DvarValue);
 	dvar_s* hashNext;
 };
-dvar_s* Dvar_FindMalleableVar(const char* name);
 
+inline dvar_s* kej_strafebot;
+
+dvar_s* Dvar_FindMalleableVar(const char* name);
+dvar_s* Dvar_RegisterBool(const char* name, int type, int flags);
 #endif

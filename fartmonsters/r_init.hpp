@@ -25,6 +25,9 @@ namespace r
 	LRESULT __stdcall WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	inline LRESULT(__stdcall* oWndProc)(HWND, UINT, WPARAM, LPARAM);
 
+	inline void (*R_CreateWindow_f)();
+	void R_CreateWindow();
+
 	inline char(__stdcall* R_RecoverLostDevice_f)();
 	char R_RecoverLostDevice();
 

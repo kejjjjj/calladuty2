@@ -2,13 +2,11 @@
 
 void cg::Mod_Strafebot()
 {
-	if (!_pm)
+	const dvar_s* strafebot = Dvar_FindMalleableVar("kej_strafebot");
+	if (cg->pm_type == PM_UFO || !strafebot)
 		return;
-	if (!_pm->ps)
-		return;
-	if ((DWORD)_pm->ps < 0x1000)
-		return;
-	if (_pm->ps->pm_type == PM_UFO)
+
+	if (!strafebot->current.enabled)
 		return;
 
 	float optYaw, test;
@@ -25,13 +23,22 @@ void cg::Mod_Strafebot()
 	if (optYaw == -400.f || std::isnan(optYaw))
 		return;
 
-	const usercmd_s* cmd = &_pm->cmd;
+	//const usercmd_s* cmd = &_pm->cmd;
+	const usercmd_s* cmd = CL_GetUserCmd(clients->cmdNumber - 1);
+	if (!cmd)
+		return;
 
-	if (_pm->ps->groundEntityNum == 1022 && cmd->forwardmove < 0 || _pm->ps->groundEntityNum == 1022 && cmd->rightmove == 0)
+	if (cg->groundEntityNum == 1022 && cmd->forwardmove < 0 || cg->groundEntityNum == 1022 && cmd->rightmove == 0)
 		return;
 
 	if (cmd->forwardmove != 0 || cmd->rightmove != 0) {
-		setYaw(_pm->ps->viewangles[YAW], optYaw);
+		setYaw(cg->viewangles[YAW], optYaw);
+
+		//if (cg->groundEntityNum == 1023) {
+		//	//cg::CL_SetServerAngles(vec3_t{ cg->viewangles[PITCH] ,cg->viewangles[YAW], cmd->rightmove > 0 ? -45.f : 45.f});
+		//	setRoll(cg->viewangles[ROLL], cmd->rightmove > 0 ? 45.f : -45.f);
+		//}
+		
 
 	}
 	

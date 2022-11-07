@@ -32,7 +32,7 @@ bool r::R_ImGui(IDirect3DDevice9* pDevice)
 	if (ImGui::GetCurrentContext())
 		return true;
 
-	std::cout << "creating new imgui context!\n";
+	//std::cout << "creating new imgui context!\n";
 	Com_Printf(CON_CHANNEL_CONSOLEONLY, "creating new imgui context!\n");
 
 	ImGui::CreateContext();
@@ -57,4 +57,15 @@ char r::R_RecoverLostDevice()
 		fs::Log_Write(LOG_NONE, "resetting imgui context");
 	}
 	return R_RecoverLostDevice_f();
+}
+constexpr DWORD agg = WS_VISIBLE | WS_POPUP;
+__declspec(naked) void r::R_CreateWindow()
+{
+	const static DWORD _jmp = gfx_d3d_mp_x86_s + 0x12ADB;
+	__asm {
+		mov edi, 8;
+		mov ebp, WS_VISIBLE | WS_POPUP;
+		jmp _jmp;
+
+	}
 }
